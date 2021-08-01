@@ -16,8 +16,8 @@ class RopyService {
     {
         const raste = {
             rasteID: this.rastes.length,
-            authorID: '',
-            dateID: '',
+            title: data.title,
+            authorID: data.author,
             text: data.text,
             time: moment().format('h:mm:ss a')
         }
@@ -38,7 +38,7 @@ app.configure(socketio());
 
 app.configure(express.rest());
 
-app.use('/raste', new RopyService());
+app.use('/rastes', new RopyService());
 
 app.on('connection', conn => app.channel('stream').join(conn));
 
@@ -48,4 +48,3 @@ const PORT = process.env.PORT || 3030;
 
 app.listen(PORT).on('listening', () => console.log(`Realtime Server running on port ${PORT}`));
 
-app.service('ideas')
