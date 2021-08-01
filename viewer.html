@@ -41,10 +41,7 @@
 <script>
     document.getElementById("rasteTitle").value = window.location.href.slice(33);
 
-    if (document.getElementById("rasteTitle").value.length > 0)
-    {
-        searchRastes();
-    }
+    
      // Socket.io setup
      const socket = io('https://raste.herokuapp.com/');
     

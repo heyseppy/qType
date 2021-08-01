@@ -18,7 +18,7 @@
 
 <div style="background:transparent !important" class="jumbotron text-center blue">
   <h1>/ropy-raste</h1>
-  <p>copying + pasting into the cloud in <i>real time</i></p> 
+  <p>real time copy-paste-edit</p> 
   <p2>created by @heyseppy 2021</p2>
 </div>
 
@@ -30,39 +30,43 @@
     </div>
   </div>
 
-<div class="download-links">
-    <p id="rasteID-code"></p>
-    
+<div id="show" class="download-links">
+    <p id="rasteID-code"></p> 
 </div>
 
 </body>
 </html>
 
 <script>
+    var x = document.getElementById("show");
+    x.style.display = "none";
+
+
     const socket = io("https://raste.herokuapp.com/");
     const app = feathers();
 
     app.configure(feathers.socketio(socket));
 
     function makeid() {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < 7; i++ ) {
-        result += characters.charAt(Math.floor(Math.random() * 
-        charactersLength));
-      }
-      return result;
+      var result           = '';
+      var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      var charactersLength = characters.length;
+      for ( var i = 0; i < 8; i++ ) {
+          result += characters.charAt(Math.floor(Math.random() * 
+          charactersLength));
+        }
+        return result;
     }
 
-
+  
 
     async function initRaste()
     {
+        x.style.display = "block";
         const titleText = document.getElementById("rasteTitle").value;
         rastekey = makeid();
         
-        document.getElementById("rasteID-code").innerHTML = "Your rasteID key is " + "<a href=\"https://raste.herokuapp.com/view/"+rastekey + "\"> " +rastekey + "</a>";
+        document.getElementById("rasteID-code").innerHTML = "<a href=\"https://raste.herokuapp.com/view/"+rastekey + "\"> " +"https://raste.herokuapp.com/view/" +rastekey + "</a>";
         app.service('rastes').create({
             rasteID: rastekey,
             title: titleText,
@@ -73,6 +77,12 @@
 </script>
 
 <style>
+    .btn-style
+    {
+      width: 16vh;
+      font-weight: bold;
+      text-align: center;
+    }
     body {background-color: lightpink;} 
     .search-field
     {
