@@ -1,0 +1,34 @@
+{
+  "name": "ropy-raste",
+  "version": "1.0.0",
+  "description": "a real time copy paste client",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heyseppy/ropy-raste.git"
+  },
+  "keywords": [
+    "copy",
+    "paste",
+    "real",
+    "real",
+    "time",
+    "feathers"
+  ],
+  "author": "Sep Kimiaei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heyseppy/ropy-raste/issues"
+  },
+  "homepage": "https://github.com/heyseppy/ropy-raste#readme",
+  "dependencies": {
+    "@feathersjs/express": "^4.5.11",
+    "@feathersjs/feathers": "^4.5.11",
+    "@feathersjs/socketio": "^4.5.11",
+    "i": "^0.3.6",
+    "moment": "^2.29.1"
+  }
+}
