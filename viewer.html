@@ -26,7 +26,7 @@
   </div>
   <div class="input-group text-field">
    
-    <textarea class="form-control" aria-label="With textarea" id="editText" onchange="syncText()"></textarea>
+    <textarea class="form-control" aria-label="With textarea" id="editText"></textarea>
   </div>
 <div class="download-links">
     <p1>Mac, Windows, Linux, Chrome</p1>
@@ -37,10 +37,11 @@
 
 <script src="https://unpkg.com/@feathersjs/client@^4.3.0/dist/feathers.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+
 <script>
      // Socket.io setup
      const socket = io('http://localhost:3030');
-
+    
     // Init feathers app
     const app = feathers();
     
@@ -49,10 +50,13 @@
     let rastes;
     let rasteId;
     let rasteData;
-   
+    let set1 = false;
+
+    
+
     async function searchRastes()
     {
-    
+        set1 = true;
         const titleText = document.getElementById("rasteTitle").value;
         rastes = await app.service('rastes').find();
         
@@ -64,7 +68,8 @@
             {
                 rasteId = (i);
                 rasteData = rastes[rasteId];
-                init(rasteId);
+                init(i);
+                
                 break
             }
         } 
@@ -79,19 +84,22 @@
 
     async function init(i)
     {
-        
-        renderRaste(rastes[rasteId])
+        renderRaste(rastes[rasteId]);
         
     }
 
-    async function syncText()
-    {
+    var inputBox = document.getElementById('editText');
+
+    inputBox.onkeyup = async function(){
+        rasteData.text = document.getElementById("editText").value;
         app.service('rastes').update(rasteId, rasteData);
-        console.log("typing");
     }
-
     
+    
+    socket.on('rastes updated', init(rasteId));
 
+        
+    
 </script>
 
 <style>

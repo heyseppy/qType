@@ -25,9 +25,17 @@ class RopyService {
 
         return raste;
     }
+    async update(id, data)
+    {
+        this.rastes[id] = data;
+    }
     async find()
     {
         return this.rastes;
+    }
+    async get(id)
+    {
+        return this.rastes[id];
     }
 }
 //parse JSON
