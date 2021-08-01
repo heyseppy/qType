@@ -61,7 +61,8 @@
     {
         const titleText = document.getElementById("rasteTitle").value;
         rastekey = makeid();
-        document.getElementById("rasteID-code").innerHTML = "Your rasteID key is " + "<b> " + rastekey + "</b>";
+        
+        document.getElementById("rasteID-code").innerHTML = "Your rasteID key is " + "<a href=\"https://raste.herokuapp.com/view/"+rastekey + "\"> " +rastekey + "</a>";
         app.service('rastes').create({
             rasteID: rastekey,
             title: titleText,
