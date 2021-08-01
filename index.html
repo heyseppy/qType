@@ -24,9 +24,9 @@
 
 
 <div class="input-group mb-3 search-field">
-    <input type="text" class="form-control" id="rasteTitle" placeholder="Enter a name for your raste!" aria-label="Enter a name for your raste!" aria-describedby="basic-addon2" onclick="initRaste()">
+    <input type="text" class="form-control" id="rasteTitle" placeholder="Enter a name for your raste!" aria-label="Enter a name for your raste!" aria-describedby="basic-addon2" >
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button">create</button>
+      <button class="btn btn-outline-secondary" onclick="initRaste()" type="button">create</button>
     </div>
   </div>
 
@@ -52,12 +52,14 @@
 
         app.service('rastes').create({
             title: titleText,
+            text: 'bla bla bla'
         });
 
     }
 </script>
 
 <style>
+    body {background-color: lightpink;} 
     .search-field
     {
         left: 30vw;

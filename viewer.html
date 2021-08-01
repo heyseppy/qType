@@ -2,34 +2,32 @@
 <html lang="en">
 <head>
   <title>ropy-raste</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://unpkg.com/@feathersjs/client@^4.3.0/dist/feathers.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 </head>
 <body>
 
-<div style="background:transparent !important" class="jumbotron text-center blue">
-  <h1>/ropy-raste</h1>
-  <p>copying + pasting into the cloud in <i>real time</i></p> 
-  <p2>created by @heyseppy 2021</p2>
-</div>
+
 
 
 <div class="input-group mb-3 search-field">
-    <input type="text" class="form-control" id="rasteTitle" placeholder="Enter a name for your raste!" aria-label="Enter a name for your raste!" aria-describedby="basic-addon2" onclick="initRaste()">
+    <input type="text" class="form-control" id="rasteTitle" placeholder="Enter the raste-id" aria-label="Enter a name for your raste!" aria-describedby="basic-addon2">
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button">create</button>
+      <button class="btn btn-outline-danger" type="button" onclick="searchRastes()">find!</button>
     </div>
   </div>
-
+  <div class="input-group text-field">
+   
+    <textarea class="form-control" aria-label="With textarea" id="editText" onchange="syncText()"></textarea>
+  </div>
 <div class="download-links">
     <p1>Mac, Windows, Linux, Chrome</p1>
 </div>
@@ -37,31 +35,80 @@
 </body>
 </html>
 
+<script src="https://unpkg.com/@feathersjs/client@^4.3.0/dist/feathers.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 <script>
-    const socket = io("http://localhost:3030");
-    const app = feathers();
+     // Socket.io setup
+     const socket = io('http://localhost:3030');
 
+    // Init feathers app
+    const app = feathers();
+    
+    // Register socket.io to talk to server
     app.configure(feathers.socketio(socket));
+    let rastes;
+    let rasteId;
+    let rasteData;
+   
+    async function searchRastes()
+    {
+    
+        const titleText = document.getElementById("rasteTitle").value;
+        rastes = await app.service('rastes').find();
+        
+        console.log(rastes);
+
+        for (let i = 0; i < rastes.length; i++) {
+            
+            if (rastes[i].title == titleText)
+            {
+                rasteId = (i);
+                rasteData = rastes[rasteId];
+                init(rasteId);
+                break
+            }
+        } 
+            
+    }
+
+
+    function renderRaste(Raste)
+    {
+        document.getElementById("editText").value = Raste.text;
+    }
+
+    async function init(i)
+    {
+        
+        renderRaste(rastes[rasteId])
+        
+    }
+
+    async function syncText()
+    {
+        app.service('rastes').update(rasteId, rasteData);
+        console.log("typing");
+    }
 
     
 
-    async function initRaste()
-    {
-        
-        const titleText = document.getElementById("rasteTitle").value;
-
-        app.service('rastes').create({
-            title: titleText,
-        });
-
-    }
 </script>
 
 <style>
+    body {background-color: lightpink;} 
     .search-field
     {
         left: 30vw;
         max-width: 40vw;
+        margin-top: 5vw;
+        margin-bottom: 40px;
+    }
+    .text-field
+    {
+        left: 10vw;
+        max-width: 80vw;
+        height: 40vw;
+        margin-top: 5vw;
         margin-bottom: 40px;
     }
 
