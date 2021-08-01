@@ -39,9 +39,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 
 <script>
-    document.getElementById("rasteTitle").value = window.location.href.slice(32);
+    document.getElementById("rasteTitle").value = window.location.href.slice(33);
+
+    if (document.getElementById("rasteTitle").value.length > 0)
+    {
+        searchRastes();
+    }
      // Socket.io setup
-     const socket = io('http://localhost:3030');
+     const socket = io('https://raste.herokuapp.com/');
     
     // Init feathers app
     const app = feathers();
@@ -70,7 +75,7 @@
                 rasteId = (i);
                 rasteData = rastes[rasteId];
                 init(i);
-                
+                document.title = rasteData.title;
                 break
             }
         } 

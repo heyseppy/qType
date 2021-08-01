@@ -39,7 +39,7 @@
 </html>
 
 <script>
-    const socket = io("http://localhost:3030");
+    const socket = io("https://raste.herokuapp.com/");
     const app = feathers();
 
     app.configure(feathers.socketio(socket));
