@@ -39,6 +39,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 
 <script>
+    document.getElementById("rasteTitle").value = window.location.href.slice(27);
      // Socket.io setup
      const socket = io('http://localhost:3030');
     
@@ -64,7 +65,7 @@
 
         for (let i = 0; i < rastes.length; i++) {
             
-            if (rastes[i].title == titleText)
+            if (rastes[i].rasteID == titleText)
             {
                 rasteId = (i);
                 rasteData = rastes[rasteId];

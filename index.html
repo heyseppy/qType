@@ -31,7 +31,8 @@
   </div>
 
 <div class="download-links">
-    <p1>Mac, Windows, Linux, Chrome</p1>
+    <p id="rasteID-code"></p>
+    
 </div>
 
 </body>
@@ -43,16 +44,28 @@
 
     app.configure(feathers.socketio(socket));
 
-    
+    function makeid() {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < 7; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * 
+        charactersLength));
+      }
+      return result;
+    }
+
+
 
     async function initRaste()
     {
-        
         const titleText = document.getElementById("rasteTitle").value;
-
+        rastekey = makeid();
+        document.getElementById("rasteID-code").innerHTML = "Your rasteID key is " + "<b> " + rastekey + "</b>";
         app.service('rastes').create({
+            rasteID: rastekey,
             title: titleText,
-            text: 'bla bla bla'
+            text: 'empty raste'
         });
 
     }
@@ -69,7 +82,8 @@
 
     .download-links
     {
-        margin-top: 60vh;
+        font-size: 13px;
+        margin-top: 3vh;
         text-align: center;
     }
 </style>

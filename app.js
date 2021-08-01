@@ -6,6 +6,15 @@ const service = require('feathers-memory');
 
 const app = express(feathers());
 
+app.get("/", (req, res) => {
+
+    res.sendFile('index.html', { root: __dirname });
+});
+
+app.get("/view/:rasteKey", (req, res) => {
+    res.sendFile('viewer.html', { root: __dirname });
+    
+});
 
 class RopyService {
     constructor(){
@@ -14,7 +23,7 @@ class RopyService {
     async create(data)
     {
         const raste = {
-            rasteID: this.rastes.length,
+            rasteID: data.rasteID,
             title: data.title,
             authorID: data.author,
             text: data.text,
