@@ -95,10 +95,10 @@
         app.service('rastes').update(rasteId, rasteData);
     }
     
+    socket.on('rastes updated', message => searchRastes());
     
-    socket.on('rastes updated', init(rasteId));
-
-        
+  
+}    
     
 </script>
 
