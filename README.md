@@ -4,7 +4,7 @@
   Ropy Raste <br>
   
 </h1>
-<p> Sep Kimiaei </p>
+<p align="center"> Sep Kimiaei </p> <br>
 
 An open-source google-docs type website dedicated to supporting a real-time typing learning environment. Can type and share links to as many people as possible for typing togethor. 
 
@@ -19,4 +19,7 @@ An open-source google-docs type website dedicated to supporting a real-time typi
 - share raste link
 - use it for a bit and code with buddies, all at the same time
 
-
+**Issues & Bug Fixes**
+- Did not automatically paste the link in via another users raste [fixed]
+- Laggy on multiple users [fixed]
+- Data management system endpoints [ongoing]
