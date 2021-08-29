@@ -1,7 +1,7 @@
 <h1 align="center">
   <a name="logo" href="https://i.imgur.com/NMhJKMp.jpg"><img src="https://i.imgur.com/NMhJKMp.jpg" alt="ropy-raste-logo" width="200"></a>
   <br>
-  Ropy Raste
+  Ropy Raste <br>
   <p1> Sep Kimiaei </p>
 </h1>
 
