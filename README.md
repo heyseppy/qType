@@ -6,6 +6,9 @@
 
 An open-source google-docs type website dedicated to supporting a real-time typing learning environment. Can type and share links to as many people as possible for typing togethor. 
 
+**Hosting**
+- https://raste.herokuapp.com/
+
 **Usability**:
 - share raste link
 - use it for a bit and code with buddies, all at the same time
