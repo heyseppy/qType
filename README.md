@@ -11,7 +11,7 @@
   <h3 align="center">qType</h3>
 
   <p align="center">
-    An real-time, web, and text-driven collaboration client. 
+    A real-time, web, and text-driven collaboration client. 
     <br />
     <br> 
   </p>
