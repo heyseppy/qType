@@ -11,7 +11,7 @@
   <h3 align="center">qType</h3>
 
   <p align="center">
-    An open source, efficient, real-time text driven collaboration platform for writing notes togethor.
+    An real-time, web, and text-driven collaboration client. 
     <br />
     <br> 
   </p>
@@ -24,7 +24,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project & Motivation
 
-Behaving very similarly to platforms such as Google Docs & Microsoft Word (Online), qType provides the base functionality for making and developing real-time data synchronisation over the net. 
+Behaving very similarly to platforms such as Google Docs, qType provides the base functionality for making and developing real-time data synchronisation over the net. 
 
 Functions:
 * Generate qType pages with a simple title 
