@@ -11,7 +11,7 @@
   <h3 align="center">qType</h3>
 
   <p align="center">
-    A real-time, web, and text-driven collaboration client. 
+    This project involves developing an online inventory system for biological samples stored in specific locations in freezers and in a liquid nitrogen    cryofacility. The software should allow data import, export, sharing and collaboration among approved users.
     <br />
     <br> 
   </p>
@@ -22,27 +22,32 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project & Motivation
-
-Behaving very similarly to platforms such as Google Docs, qType provides the base functionality for making and developing real-time data synchronisation over the net. 
+## Progress
 
 Functions:
-* Generate qType pages with a simple title 
-* Generate sharable link for connectivity for other users
-* Edit concurrently with other users
-
+* Sprint 1 [ ] (Near)
+* Sprint 2 [ ]
+* Sprint 3 [ ]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
+### Design
+* https://www.figma.com/file/DM77za8RR2E2j4xl7d80Aj/CITS3200-Project-Mockups?node-id=0%3A1
+
+
+### Database Structure
+* https://dbdiagram.io/d/62f83f6fc2d9cf52faa0e3df
+* https://dbdiagram.io/d/62f24505c2d9cf52fa72c3b7
+
+
 ### Built With
 
-Love, Iced lattes and the following:
+Love, Iced lattes and the following (potentially in the future):
 
-* Node JS
-* Feathers
-* Axios
-* Minimal CSS (no js frameworks either for now)
+* Django
+* SQLite
+* Bootstrap
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -53,41 +58,12 @@ Love, Iced lattes and the following:
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/heyseppy/qType.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
-3. Run server
-   ```sh
-   npm start
-   ```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-
 
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+The IP exploitation model requested by the Client is: Creative Commons (open source) http://creativecommons.org.au/
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
